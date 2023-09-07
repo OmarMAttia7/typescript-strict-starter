@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json.schemastore.org/swcrc",
+  "jsc": {
+    "parser": {
+      "syntax": "typescript",
+      "dynamicImport": false,
+      "decorators": false
+    },
+    "target": "esnext",
+    // Requires v1.2.50 or upper and requires target to be es2016 or upper.
+    "keepClassNames": false
+    // "baseUrl": "./",
+    // "paths": {
+    //   "src/*": ["src/*"],
+    //   "test/*": ["src/test/*"]
+    // }
+  },
+  "minify": false,
+  "exclude": ["src/test"]
+}
