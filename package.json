@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "test": "pnpm lint && pnpm build:test && node build/test/index.js",
+    "test": "pnpm lint && pnpm build:test && node build/test/main.js",
     "build": "pnpm lint && tsc -p tsconfig.build.json && swc src -d ./dist",
     "build:test": "tsc -p ./tsconfig.test.json && swc src -d ./build --config-file test.swcrc",
     "lint": "eslint ./src",
