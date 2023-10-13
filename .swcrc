@@ -11,5 +11,5 @@
     "keepClassNames": false
   },
   "minify": false,
-  "exclude": ["src/test"]
+  "exclude": ["\\.(test\\.ts|test\\.js)$"]
 }
