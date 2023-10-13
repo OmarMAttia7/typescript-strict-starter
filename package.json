@@ -10,8 +10,8 @@
     "lint": "tsc -p tsconfig.build.json && eslint ./src",
     "dev": "pnpm transform && pnpm dev:watch",
     "dev:watch": "chokidar \"./src/**/*\" -c \"pnpm transform\"",
-    "transform": "swc src -d ./dist",
-    "transform:test": "swc src -d ./build --config-file test.swcrc"
+    "transform": "rm -rf dist && swc src -d ./dist",
+    "transform:test": "rm -rf build && swc src -d ./build --config-file test.swcrc"
   },
   "keywords": [],
   "author": "",
