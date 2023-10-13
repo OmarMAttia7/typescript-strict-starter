@@ -10,8 +10,8 @@
     "lint": "tsc -p tsconfig.build.json && eslint ./src",
     "dev": "pnpm transform && pnpm dev:watch",
     "dev:watch": "chokidar \"./src/**/*\" -c \"pnpm transform\"",
-    "transform": "rm -rf dist && swc src -d ./dist",
-    "transform:test": "rm -rf build && swc src -d ./build --config-file test.swcrc"
+    "transform": "rimraf dist && swc src -d ./dist",
+    "transform:test": "rimraf build && swc src -d ./build --config-file test.swcrc"
   },
   "keywords": [],
   "author": "",
@@ -25,6 +25,7 @@
     "chokidar": "^3.5.3",
     "chokidar-cli": "^3.0.0",
     "eslint": "^8.46.0",
+    "rimraf": "^5.0.5",
     "typescript": "^5.1.6"
   },
   "exports": {
