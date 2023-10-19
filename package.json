@@ -8,6 +8,7 @@
     "test": "pnpm transform:test && node --test ./build",
     "build": "pnpm lint && swc src -d ./dist",
     "lint": "tsc -p tsconfig.build.json && eslint ./src",
+    "format": "prettier --write src",
     "dev": "pnpm transform && pnpm dev:watch",
     "dev:watch": "chokidar \"./src/**/*\" -c \"pnpm transform\"",
     "transform": "rimraf dist && swc src -d ./dist",
@@ -30,5 +31,9 @@
   },
   "exports": {
     ".": "./dist/index.js"
+  },
+  "dependencies": {
+    "eslint-config-prettier": "^9.0.0",
+    "prettier": "^3.0.3"
   }
 }
