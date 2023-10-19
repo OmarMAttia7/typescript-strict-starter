@@ -1,3 +1,3 @@
-const msg = "Hello, world!";
+const msg = 'Hello, world!';
 
 export { msg };
