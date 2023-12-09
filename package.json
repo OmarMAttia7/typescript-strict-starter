@@ -7,10 +7,11 @@
   "scripts": {
     "test": "pnpm transform:test && node --test ./build",
     "build": "pnpm lint && swc src -d ./dist",
-    "lint": "tsc -p tsconfig.build.json && eslint ./src",
-    "format": "prettier --write src",
+    "lint": "tsc -p tsconfig.build.json && biome lint ./src --apply",
+    "format": "biome format ./src --write",
     "dev": "pnpm transform && pnpm dev:watch",
     "dev:watch": "chokidar \"./src/**/*\" -c \"pnpm transform\"",
+    "check": "tsc -p tsconfig.build.json && biome check ./src --apply",
     "transform": "rimraf dist && swc src -d ./dist",
     "transform:test": "rimraf build && swc src -d ./build --config-file test.swcrc"
   },
@@ -18,16 +19,12 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@biomejs/biome": "1.4.1",
     "@swc/cli": "^0.1.63",
     "@swc/core": "^1.3.100",
     "@types/node": "^20.10.4",
-    "@typescript-eslint/eslint-plugin": "^6.13.2",
-    "@typescript-eslint/parser": "^6.13.2",
     "chokidar": "^3.5.3",
     "chokidar-cli": "^3.0.0",
-    "eslint": "^8.55.0",
-    "eslint-config-prettier": "^9.1.0",
-    "prettier": "^3.1.0",
     "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
   },
