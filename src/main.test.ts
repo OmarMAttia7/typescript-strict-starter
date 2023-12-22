@@ -1,7 +1,9 @@
-import * as assert from 'node:assert';
-import { test } from 'node:test';
-import { msg } from './main.js';
+import { strict as assert } from 'node:assert';
+import { describe, test } from 'node:test';
+import { sum } from './main.js';
 
-await test('Hello, world!', () => {
-	assert.strictEqual(msg, 'Hello, world!');
+await describe('sum', () => {
+	test('should add two numbers', () => {
+		assert.equal(sum(1, 3), 4);
+	});
 });

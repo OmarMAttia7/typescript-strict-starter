@@ -1,3 +1,1 @@
-const msg = 'Hello, world!';
-
-export { msg };
+export const sum = (a: number, b: number) => a + b;
