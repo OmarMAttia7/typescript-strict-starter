@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "type": "module",
   "scripts": {
-    "test": "pnpm transform:test && node --test ./build",
+    "test": "pnpm transform:test && node ./build/test.js",
     "build": "pnpm lint && swc src -d ./dist",
     "lint": "tsc -p tsconfig.build.json && biome lint ./src --apply",
     "format": "biome format ./src --write",
