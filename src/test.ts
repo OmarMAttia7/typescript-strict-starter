@@ -21,10 +21,13 @@ main();
 
 async function fetchTestFilePaths() {
 	const basePath = resolve('./build');
-	const dirFiles = await readdir(basePath, { recursive: true }).then((files) =>
+	const dirFiles = await readdir(basePath, {
+		recursive: true,
+		withFileTypes: true,
+	}).then((files) =>
 		files
-			.filter((file) => file.endsWith('.test.js'))
-			.map((file) => resolve(basePath, file)),
+			.filter((file) => !file.isDirectory() && file.name.endsWith('.test.js'))
+			.map((file) => resolve(basePath, file.name)),
 	);
 	if (dirFiles.length === 0) {
 		throw new Error('No test files found');
