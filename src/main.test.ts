@@ -3,7 +3,11 @@ import { describe, test } from 'node:test';
 import { sum } from './main.js';
 
 await describe('sum', () => {
-	test('should add two numbers', () => {
+	test('adds two numbers', () => {
 		assert.equal(sum(1, 3), 4);
+	});
+
+	test('adds negative numbers', () => {
+		assert.equal(sum(2, -5), -3);
 	});
 });
