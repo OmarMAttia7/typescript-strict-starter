@@ -27,7 +27,7 @@ async function fetchTestFilePaths() {
 	}).then((files) =>
 		files
 			.filter((file) => !file.isDirectory() && file.name.endsWith('.test.js'))
-			.map((file) => resolve(basePath, file.name)),
+			.map((file) => resolve(basePath, file.path, file.name)),
 	);
 	if (dirFiles.length === 0) {
 		throw new Error('No test files found');
