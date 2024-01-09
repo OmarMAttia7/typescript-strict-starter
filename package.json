@@ -12,8 +12,8 @@
     "dev": "pnpm transform && pnpm dev:watch",
     "dev:watch": "chokidar \"./src/**/*\" -c \"pnpm transform\"",
     "check": "tsc -p tsconfig.build.json && biome check ./src --apply",
-    "transform": "rimraf dist && swc src -d ./dist",
-    "transform:test": "rimraf build && swc src -d ./build --config-file test.swcrc"
+    "transform": "rimraf dist && tsc && swc src -d ./dist",
+    "transform:test": "rimraf build && tsc && swc src -d ./build --config-file test.swcrc"
   },
   "keywords": [],
   "author": "",
