@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "test": "pnpm transform:test && node ./build/test.js",
-    "build": "pnpm lint && swc src -d ./dist",
+    "build": "pnpm lint && pnpm transform",
     "lint": "tsc -p tsconfig.build.json && biome lint ./src --apply",
     "format": "biome format ./src --write",
     "dev": "pnpm transform && pnpm dev:watch",
