@@ -10,7 +10,7 @@
 	"scripts": {
 		"test": "pnpm transform:test && node ./build/test.js",
 		"build": "pnpm lint && pnpm transform",
-		"lint": "tsc -p tsconfig.build.json && biome lint ./src --apply",
+		"lint": "tsc -p tsconfig.build.json && eslint ./src --fix",
 		"format": "prettier ./src --write",
 		"dev": "pnpm transform && pnpm dev:watch",
 		"dev:watch": "chokidar \"./src/**/*\" -c \"pnpm transform\"",
@@ -27,6 +27,7 @@
 		"chokidar": "^3.6.0",
 		"chokidar-cli": "^3.0.0",
 		"eslint": "^8.56.0",
+		"eslint-config-prettier": "^9.1.0",
 		"prettier": "3.2.5",
 		"rimraf": "^5.0.5",
 		"tsc-alias": "^1.8.8",
