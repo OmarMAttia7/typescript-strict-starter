@@ -1,6 +1,9 @@
 {
 	"name": "typescript-strict-starter",
-	"version": "1.0.0",
+	"version": "2.0.0",
+	"engines": {
+		"node": ">=20.11.0"
+	},
 	"description": "",
 	"main": "dist/index.js",
 	"type": "module",
@@ -8,10 +11,9 @@
 		"test": "pnpm transform:test && node ./build/test.js",
 		"build": "pnpm lint && pnpm transform",
 		"lint": "tsc -p tsconfig.build.json && biome lint ./src --apply",
-		"format": "biome format ./src --write",
+		"format": "prettier ./src --write",
 		"dev": "pnpm transform && pnpm dev:watch",
 		"dev:watch": "chokidar \"./src/**/*\" -c \"pnpm transform\"",
-		"check": "tsc -p tsconfig.build.json && biome check ./src --apply",
 		"transform": "rimraf dist && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json && swc src -d ./dist",
 		"transform:test": "rimraf build && tsc -p tsconfig.test.json && tsc-alias -p tsconfig.test.json && swc src -d ./build --config-file test.swcrc"
 	},
@@ -19,15 +21,17 @@
 	"author": "",
 	"license": "ISC",
 	"devDependencies": {
-		"@biomejs/biome": "1.5.3",
 		"@swc/cli": "^0.1.65",
 		"@swc/core": "^1.4.1",
-		"@types/node": "^20.11.18",
+		"@types/node": "^20.11.19",
 		"chokidar": "^3.6.0",
 		"chokidar-cli": "^3.0.0",
+		"eslint": "^8.56.0",
+		"prettier": "3.2.5",
 		"rimraf": "^5.0.5",
 		"tsc-alias": "^1.8.8",
-		"typescript": "^5.3.3"
+		"typescript": "^5.3.3",
+		"typescript-eslint": "^7.0.1"
 	},
 	"exports": {
 		".": "./dist/index.js"
