@@ -4,7 +4,6 @@
     "enabled": true
   },
   "linter": {
-    "enabled": true,
     "rules": {
       "all": true,
       "nursery": {
