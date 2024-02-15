@@ -10,7 +10,8 @@ async function main() {
 		const files = await fetchTestFilePaths();
 		runTests({
 			files,
-		})(teardown);
+			teardown,
+		});
 	} catch (err) {
 		await teardown();
 		throw err;
@@ -45,18 +46,18 @@ async function teardown() {
 	console.info('Teardown test environment...');
 }
 
-const runTests =
-	(options: {
-		files: string[];
-	}) =>
-	(teardown: () => Promise<void>) => {
-		const { files } = options;
+const runTests = ({
+	files,
+	teardown,
+}: {
+	files: string[];
+	teardown: () => Promise<void>;
+}) => {
+	const stream = run({
+		files,
+	}).compose<NodeJS.ReadableStream>(new spec());
 
-		const stream = run({
-			files,
-		}).compose<NodeJS.ReadableStream>(new spec());
+	finished(stream, teardown);
 
-		finished(stream, teardown);
-
-		stream.pipe(process.stdout);
-	};
+	stream.pipe(process.stdout);
+};
