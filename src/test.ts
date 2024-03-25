@@ -1,17 +1,16 @@
 import * as FileSystem from 'node:fs/promises';
 import * as Path from 'node:path';
-import * as NodeStream from 'node:stream';
+import * as NodeStream from 'node:stream/promises';
 import * as NodeTest from 'node:test';
 import * as NodeTestReporters from 'node:test/reporters';
 
 async function main() {
   try {
     await setup();
-    const files = await fetchTestFilePaths();
-    runTests({
-      files,
-      teardown,
+    await runTests({
+      files: await fetchTestFilePaths(),
     });
+    await teardown();
   } catch (err) {
     await teardown();
     throw err;
@@ -46,20 +45,16 @@ async function teardown() {
   console.info('Teardown test environment...');
 }
 
-function runTests({
-  files,
-  teardown,
-}: {
-  files: string[];
-  teardown: () => Promise<void>;
-}) {
-  const stream = NodeTest.run({
-    files,
-  }).compose<NodeJS.ReadableStream>(new NodeTestReporters.spec());
+function runTests({ files }: { files: string[] }) {
+  return new Promise<void>((resolve) => {
+    const stream = NodeTest.run({
+      files,
+    })
+      .compose<NodeJS.ReadableStream>(new NodeTestReporters.spec())
+      
 
-  NodeStream.finished(stream, () => {
-    void teardown();
+    NodeStream.finished(stream).then(resolve);
+
+    stream.pipe(process.stdout);
   });
-
-  stream.pipe(process.stdout);
 }
