@@ -53,7 +53,7 @@ function runTests({ files }: { files: string[] }) {
       .compose<NodeJS.ReadableStream>(new NodeTestReporters.spec())
       
 
-    NodeStream.finished(stream).then(resolve);
+    void NodeStream.finished(stream).then(resolve);
 
     stream.pipe(process.stdout);
   });
