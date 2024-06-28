@@ -1,40 +1,37 @@
 {
-	"name": "typescript-strict-starter",
-	"version": "2.0.0",
-	"engines": {
-		"node": ">=20.11.0"
-	},
-	"description": "",
-	"main": "dist/index.js",
-	"type": "module",
-	"scripts": {
-		"test": "pnpm transform:test && node ./build/test.js",
-		"build": "pnpm lint && pnpm transform",
-		"lint": "tsc -p tsconfig.build.json && eslint ./src --fix",
-		"format": "prettier ./src --write",
-		"dev": "pnpm transform && pnpm dev:watch",
-		"dev:watch": "chokidar \"./src/**/*\" -c \"pnpm transform\"",
-		"transform": "rimraf dist && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json && swc src -d ./dist",
-		"transform:test": "rimraf build && tsc -p tsconfig.test.json && tsc-alias -p tsconfig.test.json && swc src -d ./build --config-file test.swcrc"
-	},
-	"keywords": [],
-	"author": "",
-	"license": "ISC",
-	"devDependencies": {
-		"@swc/cli": "^0.1.65",
-		"@swc/core": "^1.6.3",
-		"@types/node": "^20.14.5",
-		"chokidar": "^3.6.0",
-		"chokidar-cli": "^3.0.0",
-		"eslint": "^8.57.0",
-		"eslint-config-prettier": "^9.1.0",
-		"prettier": "3.2.5",
-		"rimraf": "^5.0.7",
-		"tsc-alias": "^1.8.10",
-		"typescript": "^5.4.5",
-		"typescript-eslint": "^7.13.1"
-	},
-	"exports": {
-		".": "./dist/index.js"
-	}
+  "name": "typescript-strict-starter",
+  "version": "3.0.0",
+  "engines": {
+    "node": ">=20.11.0"
+  },
+  "description": "TypeScript project starter with the strict config, Uses NodeJS native test runner.",
+  "main": "dist/index.js",
+  "type": "module",
+  "scripts": {
+    "test": "pnpm transform:test && node ./build/test.js",
+    "build": "pnpm lint && pnpm transform",
+    "lint": "tsc -p tsconfig.build.json && eslint ./src --fix",
+    "format": "prettier ./src --write",
+    "transform": "rimraf dist && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json && swc src -d ./dist",
+    "transform:test": "rimraf build && tsc -p tsconfig.test.json && tsc-alias -p tsconfig.test.json && swc src -d ./build --config-file test.swcrc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@swc/cli": "^0.1.65",
+    "@swc/core": "^1.6.5",
+    "@types/node": "^20.14.9",
+    "chokidar": "^3.6.0",
+    "eslint": "^8.57.0",
+    "eslint-config-prettier": "^9.1.0",
+    "prettier": "3.2.5",
+    "rimraf": "^5.0.7",
+    "tsc-alias": "^1.8.10",
+    "typescript": "^5.5.2",
+    "typescript-eslint": "^7.14.1"
+  },
+  "exports": {
+    ".": "./dist/index.js"
+  }
 }
