@@ -13,7 +13,7 @@
     "lint": "tsc -p tsconfig.build.json && eslint ./src --fix",
     "format": "prettier ./src --write",
     "transform": "rimraf dist && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json && swc src -d ./dist",
-    "transform:test": "rimraf build && tsc -p tsconfig.test.json && tsc-alias -p tsconfig.test.json && swc src -d ./build --config-file test.swcrc"
+    "transform:test": "rimraf build && swc src -d ./build --config-file test.swcrc"
   },
   "keywords": [],
   "author": "",
