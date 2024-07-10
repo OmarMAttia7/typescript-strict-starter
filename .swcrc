@@ -8,11 +8,7 @@
     },
     "target": "esnext",
     // Requires v1.2.50 or upper and requires target to be es2016 or upper.
-    "keepClassNames": false,
-    "baseUrl": "./" /* Specify the base directory to resolve non-relative module names. */,
-    "paths": {
-      "@src/*": ["src/*"]
-    }
+    "keepClassNames": false
   },
   "minify": false,
   "exclude": ["\\.(test\\.ts|test\\.js)$"]
