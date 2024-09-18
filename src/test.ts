@@ -30,7 +30,8 @@ async function fetchTestFilePaths() {
       .map((file) => Path.resolve(basePath, file.path, file.name)),
   );
   if (dirFiles.length === 0) {
-    throw new Error('No test files found');
+    console.info('No test files found.');
+    process.exit(0);
   }
   return dirFiles;
 }
@@ -49,9 +50,7 @@ function runTests({ files }: { files: string[] }) {
   return new Promise<void>((resolve) => {
     const stream = NodeTest.run({
       files,
-    })
-      .compose<NodeJS.ReadableStream>(new NodeTestReporters.spec())
-      
+    }).compose<NodeJS.ReadableStream>(new NodeTestReporters.spec());
 
     void NodeStream.finished(stream).then(resolve);
 
