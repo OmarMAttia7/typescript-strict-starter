@@ -5,34 +5,33 @@
     "node": ">=20.11.0"
   },
   "description": "TypeScript project starter with the strict config, Uses NodeJS native test runner.",
-  "main": "dist/index.js",
+  "main": "dist/main.js",
   "type": "module",
   "scripts": {
-    "test": "pnpm transform:test && node ./build/test.js",
-    "build": "pnpm lint && pnpm transform",
+    "test": "pnpm build:test && node ./build/test.js",
     "lint": "tsc -p tsconfig.build.json && eslint ./src --fix",
     "format": "prettier ./src --write",
-    "transform": "rimraf dist && tsc -p tsconfig.build.json && tsc-alias -p tsconfig.build.json && swc src -d ./dist",
-    "transform:test": "rimraf build && swc src -d ./build --config-file test.swcrc"
+    "build": "rimraf dist && pnpm lint && tsc-alias -p tsconfig.build.json && swc src -d ./dist",
+    "build:test": "rimraf build && swc src -d ./build --config-file test.swcrc"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
     "@swc/cli": "^0.1.65",
-    "@swc/core": "^1.6.13",
-    "@types/node": "^20.14.10",
+    "@swc/core": "^1.7.26",
+    "@types/node": "^20.16.5",
     "chokidar": "^3.6.0",
-    "eslint": "^8.57.0",
+    "eslint": "^8.57.1",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "3.2.5",
-    "rimraf": "^5.0.9",
+    "rimraf": "^5.0.10",
     "tsc-alias": "^1.8.10",
-    "typescript": "^5.5.3",
-    "typescript-eslint": "^7.16.0"
+    "typescript": "^5.6.2",
+    "typescript-eslint": "^7.18.0"
   },
   "exports": {
-    ".": "./dist/index.js"
+    ".": "./dist/main.js"
   },
   "imports": {
     "#src/*": "./dist/*"
