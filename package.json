@@ -11,8 +11,7 @@
     "test": "tsx test.ts",
     "lint": "tsc -p tsconfig.build.json && eslint ./src --fix",
     "format": "prettier ./src --write",
-    "build": "unbuild",
-    "build:test": ""
+    "build": "unbuild"
   },
   "keywords": [],
   "author": "",
