@@ -20,13 +20,13 @@ async function main() {
 await main();
 
 async function fetchTestFilePaths() {
-  const basePath = Path.resolve('./build');
+  const basePath = Path.resolve('./src');
   const dirFiles = await FileSystem.readdir(basePath, {
     recursive: true,
     withFileTypes: true,
   }).then((files) =>
     files
-      .filter((file) => !file.isDirectory() && file.name.endsWith('.test.js'))
+      .filter((file) => !file.isDirectory() && file.name.endsWith('.test.ts'))
       .map((file) => Path.resolve(basePath, file.parentPath, file.name)),
   );
   if (dirFiles.length === 0) {

@@ -5,33 +5,34 @@
     "node": ">=20.11.0"
   },
   "description": "TypeScript project starter with the strict config, Uses NodeJS native test runner.",
-  "main": "dist/main.js",
+  "main": "dist/main.mjs",
   "type": "module",
   "scripts": {
-    "test": "pnpm build:test && node ./build/test.js",
+    "test": "tsx test.ts",
     "lint": "tsc -p tsconfig.build.json && eslint ./src --fix",
     "format": "prettier ./src --write",
-    "build": "rimraf dist && pnpm lint && tsc-alias -p tsconfig.build.json && swc src -d ./dist",
-    "build:test": "rimraf build && swc src -d ./build --config-file test.swcrc"
+    "build": "unbuild",
+    "build:test": ""
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@swc/cli": "^0.1.65",
-    "@swc/core": "^1.7.36",
     "@types/node": "^20.16.12",
-    "chokidar": "^3.6.0",
     "eslint": "^9.13.0",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "3.2.5",
-    "rimraf": "^5.0.10",
-    "tsc-alias": "^1.8.10",
+    "tsx": "^4.19.1",
     "typescript": "^5.6.3",
-    "typescript-eslint": "^8.10.0"
+    "typescript-eslint": "^8.10.0",
+    "unbuild": "^2.0.0"
   },
   "exports": {
-    ".": "./dist/main.js"
+    ".": {
+      "import": "./dist/main.mjs",
+      "require": "./dist/main.cjs",
+      "types": "./dist/main.d.ts"
+    }
   },
   "imports": {
     "#src/*": "./dist/*"
