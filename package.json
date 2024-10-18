@@ -4,7 +4,7 @@
   "engines": {
     "node": ">=20.11.0"
   },
-  "description": "TypeScript project starter with the strict config, Uses NodeJS native test runner.",
+  "description": "TypeScript project starter with the strict config, Uses unbuild, tsx and NodeJS native test runner.",
   "main": "dist/main.mjs",
   "type": "module",
   "scripts": {
