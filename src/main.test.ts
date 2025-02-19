@@ -1,6 +1,6 @@
 import { strict as assert } from 'node:assert';
 import { describe, test } from 'node:test';
-import { sum } from '#src/main.js';
+import { sum } from '~/main.js';
 
 await describe('sum', async () => {
   await Promise.all([

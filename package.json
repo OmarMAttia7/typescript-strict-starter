@@ -4,8 +4,8 @@
   "engines": {
     "node": ">=20.11.0"
   },
+  "packageManager": "pnpm@10.4.0",
   "description": "TypeScript project starter with the strict config, Uses unbuild, tsx and NodeJS native test runner.",
-  "main": "dist/main.mjs",
   "type": "module",
   "scripts": {
     "test": "tsx test.ts",
@@ -17,13 +17,13 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@types/node": "^20.17.16",
-    "eslint": "^9.19.0",
+    "@types/node": "^20.17.19",
+    "eslint": "^9.20.1",
     "eslint-config-prettier": "^9.1.0",
     "prettier": "3.2.5",
-    "tsx": "^4.19.2",
+    "tsx": "^4.19.3",
     "typescript": "^5.7.3",
-    "typescript-eslint": "^8.21.0",
+    "typescript-eslint": "^8.24.1",
     "unbuild": "^3.3.1"
   },
   "exports": {
@@ -33,7 +33,12 @@
       "types": "./dist/main.d.ts"
     }
   },
-  "imports": {
-    "#src/*": "./dist/*"
+  "main": "./dist/main.cjs",
+  "types": "./dist/main.d.ts",
+  "files": ["dist"],
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "esbuild"
+    ]
   }
 }
