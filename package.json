@@ -11,7 +11,7 @@
     "test": "tsx test.ts",
     "lint": "tsc -p tsconfig.build.json && eslint ./src --fix",
     "format": "prettier ./src --write",
-    "build": "unbuild && vite build",
+    "build": "BUILD=true unbuild && vite build",
     "dev": "concurrently \"vite\" \"tsx watch src/main.tsx\" --kill-others-on-fail",
     "start": "NODE_ENV=production node dist/main.mjs"
   },
@@ -48,6 +48,7 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.7",
+    "destr": "^2.0.3",
     "effect": "^3.13.2",
     "h3": "^1.15.0",
     "hono": "^4.7.2",
