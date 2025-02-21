@@ -9,9 +9,10 @@ export default defineBuildConfig({
   },
   sourcemap: true,
   rollup: {
-    emitCJS: true,
     esbuild: {
       target: 'esnext',
+      jsxImportSource: 'hono/jsx',
+      jsx: 'automatic',
     },
     inlineDependencies: true,
   },
